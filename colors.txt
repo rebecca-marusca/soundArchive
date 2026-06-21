@@ -1,0 +1,28 @@
+#957D95 - background
+button 1:
+    #88BDA4 - accent
+    #659287
+button 2:
+    #B5BAFF
+    #9FA1FF
+button 3:
+    #4B5694
+    #111844
+button 4:
+    #AE2448
+    #6E1A37
+button 5:
+    #FFAE6E
+    #EC6530
+button 6:
+    #CBF1F5
+    #A6E3E9
+button 7:
+    #9DC08B
+    #609966
+button 8:
+    #F67280
+    #C06C84
+button 9:
+    #CDE990
+    #AACB73
