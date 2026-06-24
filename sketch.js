@@ -17,6 +17,7 @@ let buttons_middle = [];
 let buttons_bottom = [];
 let canvas;
 let currentSound = null;
+let ripples = [];
 
 function soundPath(fileName) {
   return `sound_effects/${fileName}`;
@@ -71,6 +72,20 @@ function draw() {
     buttons_middle[i].show();
     buttons_bottom[i].show();
   }
+
+  for(let i = ripples.length - 1; i>=0; i--) {
+    let r = ripples[i];
+
+    noFill();
+    stroke(255, r.a);
+    strokeWeight(2);
+    ellipse(r.x, r.y, r.r);
+
+    r.r +=8;
+    r.a -=8;
+
+    if(r.a <=0) ripples.splice(i, 1);
+  }
 }
 
 function mousePressed() {
@@ -98,6 +113,7 @@ class Button {
     this.color = color;
     this.accent = accent;
     this.song = song;
+    this.active = false;
   }
 
   show() {
@@ -111,6 +127,11 @@ class Button {
 
     fill(this.color);
     arc(this.x, (this.y+50), this.w, this.h, TWO_PI, PI);
+
+    if(this.active) {
+      fill(255, 80);
+      ellipse(this.x, this.y, this.w + 10, this.h + 10);
+    }
   }
 
   clicked(px, py) {
@@ -121,11 +142,15 @@ class Button {
         currentSound.stop();
       }
 
-      bgColor = color(random(255), random(255), random(255));
+      bgColor = color(random(30, 255), random(30, 255), random(30, 255));
 
       currentSound = this.song;
       this.y += 10; // add 10 units to the y position (aka press it)
       this.song.play(); 
+      this.active = true;
+      setTimeout(() => this.active = false, 300);
+
+      ripples.push({x: this.x, y: this.y, r: 10, a: 200});
     }
   }
 }
