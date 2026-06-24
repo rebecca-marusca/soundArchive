@@ -24,6 +24,9 @@ function soundPath(fileName) {
 
 function setup() {
   canvas = createCanvas(width, height);
+  
+  bgColor = color('#293681');
+  baseFill = color('#121826');
 
   bite_sound = loadSound(soundPath('bite_sound.mp3'));
   bluetooth = loadSound(soundPath('bluetooth.mp3'));
@@ -51,9 +54,9 @@ function setup() {
   buttons_middle.push(b5);
   buttons_middle.push(b6);
 
-  let b7 = new Button(width/3, 2*height/3, 200, 80, color('#9DC08B'), color('#609966'), mario_jump);
-  let b8 = new Button(width/2, 2*height/3, 200, 80, color('#F67280'), color('#C06C84'), metal_pipe);
-  let b9 = new Button(2*width/3, 2*height/3, 200, 80, color('#CDE990'), color('#AACB73'), fortnite_death);
+  let b7 = new Button(width/3, 2*height/3, 200, 80, color('#048ba8'), color('#035d71'), mario_jump);
+  let b8 = new Button(width/2, 2*height/3, 200, 80, color('#731d89'), color('#441151'), metal_pipe);
+  let b9 = new Button(2*width/3, 2*height/3, 200, 80, color('#e56e7a'), color('#D72638'), fortnite_death);
 
   buttons_bottom.push(b7);
   buttons_bottom.push(b8);
@@ -61,7 +64,7 @@ function setup() {
 }
 
 function draw() {
-  background('#293681');
+  background(bgColor);
   noStroke();
   for(let i=0; i<buttons_top.length; i++) {
     buttons_top[i].show();
@@ -117,6 +120,8 @@ class Button {
       if (currentSound && currentSound.isPlaying()) {
         currentSound.stop();
       }
+
+      bgColor = color(random(255), random(255), random(255));
 
       currentSound = this.song;
       this.y += 10; // add 10 units to the y position (aka press it)

@@ -4,11 +4,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>my-soundboard</title>
+  <link href='https://fonts.googleapis.com/css?family=Bagel Fat One' rel='stylesheet'>
+  <title>soundArchive</title>
   <style>
     body {
+      position: relative;
       padding: 0;
       margin: 0;
+      background-color: #293681;
+      font-family: 'Bagel Fat One';
+      font-size: 22px;
+    }
+
+    .page-title {
+      position: absolute;
+      top: 18px;
+      left: 0;
+      right: 0;
+      margin: 0;
+      font-size: clamp(2.5rem, 7vw, 6rem);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.04em;
+      text-align: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .page-subtitle {
+      position: absolute;
+      top: 160px;
+      left: 0;
+      right: 0;
+      margin: 0;
+      font-weight: 100;
+      color: #ffffff;
+      text-align: center;
     }
   </style>
   <script src="./p5.min.js"></script>
@@ -18,6 +49,8 @@
 </head>
 
 <body>
+  <h1 class="page-title">soundArchive</h1>
+  <h3 class="page-subtitle">running through my head on a daily basis</h3>
   <main>
   </main>
 </body>
